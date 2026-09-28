@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Downloader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Saves into {{ downloads }}</p>
+    <h1>Paste a link. Get the best quality.</h1>
+    <p class="lede">
+      A video is saved straight into Downloads. A playlist is saved into a folder
+      named after that playlist. A channel is saved into a folder named after the
+      channel: every video in upload order, and each playlist in its own folder.
+      Each file uses the title from YouTube.
+    </p>
+
+    <form id="form">
+      <label for="url">YouTube link</label>
+      <div class="row">
+        <input
+          id="url"
+          name="url"
+          type="url"
+          inputmode="url"
+          placeholder="Video, playlist, or channel link"
+          autocomplete="off"
+          spellcheck="false"
+          required
+        >
+        <button type="submit" id="go">Download</button>
+      </div>
+    </form>
+    <p id="form-error" class="form-error" hidden></p>
+    <p id="cookie-note" class="note">
+      If YouTube blocks a long download, sign in to YouTube in Firefox and press Download again.
+      Videos already saved are skipped.
+    </p>
+    <p id="ffmpeg-note" class="note" hidden>
+      ffmpeg isn’t available, so some videos may not be saved at the highest quality.
+    </p>
+
+    <section id="panel" class="panel" hidden aria-live="polite"></section>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
